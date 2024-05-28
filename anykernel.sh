@@ -42,4 +42,5 @@ ui_print "Dumping/splitting Image...";
 dump_boot; # use split_boot to skip ramdisk unpack, e.g. for devices with init_boot ramdisk
 ui_print "Flashing Image...";
 write_boot; # use flash_boot to skip ramdisk repack, e.g. for devices with init_boot ramdisk
+wipe_dalvik; #wipe Dalvik-cache
 ## end boot install

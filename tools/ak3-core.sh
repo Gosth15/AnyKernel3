@@ -937,7 +937,7 @@ setup_ak() {
   if [ ! "$NO_BLOCK_DISPLAY" ]; then
     ui_print "$BLOCK";
   fi;
-  
+
   # allow multi-partition ramdisk modifying configurations (using reset_ak)
   name=$(basename $BLOCK | sed -e 's/_a$//' -e 's/_b$//');
   if [ "$BLOCK" ] && [ ! -d "$RAMDISK" -a ! -d "$PATCH" ]; then
@@ -955,6 +955,17 @@ setup_ak() {
   type ${name}_attributes >/dev/null 2>&1 && ${name}_attributes;
 }
 ###
+
+## Wipe dalvik-cache
+wipe_dalvik(){
+    ui_print "Clearing Dalvik-Cache"
+    if rm -rf /data/dalvik-cache; then
+        ui_print "Dalvik-cache cleared..."
+    else
+        ui_print "Dalvik-cache not cleared..."
+    fi
+}
+## end wipe_dalvik
 
 ### end methods
 
